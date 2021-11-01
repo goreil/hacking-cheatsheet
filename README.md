@@ -37,7 +37,16 @@ https://compilationhell.blogspot.com/2011/08/exceptc-undefined-reference-to.html
 ## common commands
 * `echo "set disassembly intel" > ~/.gdbinit` sets gdb to intel syntax
 
+## GCC
+* `gcc -g -o <output_file> <input-file.c>` stores in an input file and links for debugger
+* `gdb -q <output_file>` debugger can not access the source_code 
+
 ## In GDB
+
+* `list` Shows the source code if it exists.
+* `b <line>` Sets a breakpoint
+* `run` Runs the program
+* `continue` Continues after a breakpoint
 
 ### Display format
 
