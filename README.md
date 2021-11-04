@@ -39,7 +39,7 @@ https://compilationhell.blogspot.com/2011/08/exceptc-undefined-reference-to.html
 
 ## GCC
 * `gcc -g -o <output_file> <input-file.c>` stores in an input file and links for debugger
-* `gdb -q <output_file>` debugger can not access the source_code 
+* `gdb -q <output_file>` debugger loading symbols
 
 ## In GDB
 
