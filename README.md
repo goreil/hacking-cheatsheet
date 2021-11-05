@@ -3,7 +3,13 @@
 # Chapter 0x300
 
 ## Why won't my shellcode work?
-https://unix.stackexchange.com/questions/66802/disable-stack-protection-on-ubuntu-for-buffer-overflow-without-c-compiler-flags
+
+### Because newer Linux versions have exec shield
+
+* https://wiki.ubuntu.com/Security/Features#nx
+* https://unix.stackexchange.com/questions/66802/disable-stack-protection-on-ubuntu-for-buffer-overflow-without-c-compiler-flags
+
+**Try this Solution:** Use Ubuntu 9.04 or earlier
 
 # Chapter 0x200
 
