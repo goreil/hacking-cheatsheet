@@ -1,6 +1,9 @@
 # Repo for code from the art of exploitation
 
+# Chapter 0x300
 
+## Why won't my shellcode work?
+https://unix.stackexchange.com/questions/66802/disable-stack-protection-on-ubuntu-for-buffer-overflow-without-c-compiler-flags
 
 # Chapter 0x200
 
