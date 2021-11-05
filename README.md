@@ -4,8 +4,10 @@
 
 # Chapter 0x200
 
-## common commands
-* `echo "set disassembly intel" > ~/.gdbinit` sets gdb to intel syntax
+## Change permissions
+Change Suid
+* `sudo chown root:root <binary>`
+* `sudo chomod u+s <binary>`
 
 ## Pcalc - Fast calculations
 * `pcalc 0x03e7` Calculate hex to dec and bin
@@ -21,6 +23,9 @@
 * `b <line>` Sets a breakpoint
 * `run` Runs the program
 * `continue` Continues after a breakpoint
+
+## common commands
+* `echo "set disassembly intel" > ~/.gdbinit` sets gdb to intel syntax
 
 ### Display format
 
