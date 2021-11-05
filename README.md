@@ -12,6 +12,7 @@
 
 ## GCC
 * `gcc -g -o <output_file> <input-file.c>` stores in an input file and links for debugger
+* `gcc -fno-stack-protector <input-file.c>` disable stack protector 
 * `gdb -q <output_file>` debugger loading symbols
 
 ## In GDB
