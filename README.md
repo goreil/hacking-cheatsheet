@@ -2,6 +2,14 @@
 
 # Chapter 0x300
 
+## Bash loops
+
+```
+for i in $(seq 1 10)
+  >do 
+  >echo the value is $i
+  >done
+```
 ## Why won't my shellcode work?
 
 ### Because newer Linux versions have exec shield
