@@ -2,7 +2,11 @@
 
 # Chapter 0x300
 
-## Bash loops
+## Bash 
+### suppress errors
+Just add `2>/dev/null` at the end
+
+### loops
 
 ```
 for i in $(seq 1 10)
