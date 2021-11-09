@@ -44,7 +44,7 @@ Change Suid
 * `gdb -q <output_file>` quiet mode, disable header
 
 ## In GDB
-
+* Have run with arguments `gdb --args executablename arg1 arg2 arg3`
 * `list` Shows the source code if it exists.
 * `b <line>` Sets a breakpoint
 * `run` Runs the program
