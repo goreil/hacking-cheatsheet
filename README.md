@@ -16,6 +16,9 @@ for i in $(seq 1 10)
 ```
 ## Why won't my shellcode work?
 
+### Randomize VA Space
+* `echo 0 > /proc/sys/kernel/randomize_va_space`
+
 ### Because newer Linux versions have exec shield
 
 * https://wiki.ubuntu.com/Security/Features#nx
@@ -25,8 +28,6 @@ for i in $(seq 1 10)
 
 **Solution:** Use `mprotect(<pointer to memory>, <mem_size>, PROT_WRITE|PROT_READ|PROT_EXEC);` in C. Remember to first use mprotect and then write the shellcode. Also, you need to `#include <sys/mman.h>
 
-## Shellcode
-NASM to shellcode https://gist.github.com/P1kachu/a1bf1afa2ecfc7c557be
 
 # Chapter 0x200
 
