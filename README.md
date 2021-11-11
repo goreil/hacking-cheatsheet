@@ -50,6 +50,7 @@ Change Suid
 * `b <line>` Sets a breakpoint
 * `run` Runs the program
 * `continue` Continues after a breakpoint
+* Find address of 'system': `p system`
 
 ## common commands
 * `echo "set disassembly intel" > ~/.gdbinit` sets gdb to intel syntax
