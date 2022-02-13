@@ -2,6 +2,8 @@
 Book Link: https://nostarch.com/hacking2.htm
 
 
+<img src="Cover Image.png" alt="Art of Exploitation Cover image" />
+
 This repository contains is mostly this cheatsheet I created for future reference. It also contains some of the code samples.
 It contains only tips for Chapter **0x200 Programming Basics** and **0x300 Exploitation**, since those were the topics I was mostly interested in.
 
