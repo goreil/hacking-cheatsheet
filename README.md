@@ -1,35 +1,14 @@
-# Repo for code from the art of exploitation
-
-# Chapter 0x300
-
-## Bash 
-### suppress errors
-Just add `2>/dev/null` at the end
-
-### loops
-
-```
-for i in $(seq 1 10)
-  >do 
-  >echo the value is $i
-  >done
-```
-## Why won't my shellcode work?
-
-### Randomize VA Space
-* `echo 0 > /proc/sys/kernel/randomize_va_space`
-
-### Because newer Linux versions have exec shield
-
-* https://wiki.ubuntu.com/Security/Features#nx
-* https://unix.stackexchange.com/questions/66802/disable-stack-protection-on-ubuntu-for-buffer-overflow-without-c-compiler-flags
-
-**Try this Solution:** Use Ubuntu 9.04 or earlier
-
-**Solution:** Use `mprotect(<pointer to memory>, <mem_size>, PROT_WRITE|PROT_READ|PROT_EXEC);` in C. Remember to first use mprotect and then write the shellcode. Also, you need to `#include <sys/mman.h>
+# Cheatsheet for the Book "Art of Exploitation"
+Book Link: https://nostarch.com/hacking2.htm
 
 
-# Chapter 0x200
+This repository contains is mostly this cheatsheet I created for future reference. It also contains some of the code samples.
+It contains only tips for Chapter **0x200 Programming Basics** and **0x300 Exploitation**, since those were the topics I was mostly interested in.
+
+I thought it might be useful for other people as well.
+
+
+# Chapter 0x200 Programming basics
 
 ## Change permissions
 Change Suid
@@ -110,5 +89,33 @@ https://compilationhell.blogspot.com/2011/08/exceptc-undefined-reference-to.html
 
 #### Second solution
 * Get a fresh file`wget https://sources.debian.org/data/main/g/gcc-h8300-hms/1%3A3.4.6%2Bdfsg-1/gcc/cp/cfns.h`
+
+# Chapter 0x300 Exploitation
+
+## Bash 
+### suppress errors
+Just add `2>/dev/null` at the end
+
+### loops
+
+```
+for i in $(seq 1 10)
+  >do 
+  >echo the value is $i
+  >done
+```
+## Why won't my shellcode work?
+
+### Randomize VA Space
+* `echo 0 > /proc/sys/kernel/randomize_va_space`
+
+### Because newer Linux versions have exec shield
+
+* https://wiki.ubuntu.com/Security/Features#nx
+* https://unix.stackexchange.com/questions/66802/disable-stack-protection-on-ubuntu-for-buffer-overflow-without-c-compiler-flags
+
+**Try this Solution:** Use Ubuntu 9.04 or earlier
+
+**Solution:** Use `mprotect(<pointer to memory>, <mem_size>, PROT_WRITE|PROT_READ|PROT_EXEC);` in C. Remember to first use mprotect and then write the shellcode. Also, you need to `#include <sys/mman.h>
 
 
