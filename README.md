@@ -47,7 +47,8 @@
 ## Shellcode
 ### Repeat instruction
 ```asm 
-.rept nop 10
+.rept 10
+  nop
 .endr
 ```
 Repeat nop 10 times
