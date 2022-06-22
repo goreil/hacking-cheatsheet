@@ -1,5 +1,10 @@
 # Cheatsheet for Exploitations
 
+## Upgrade reverse shell
+
+1. `python3 -c "import pty; pty.spawn('/bin/bash')"`
+2. <Press CTRL+Z> `stty raw -echo; fg`
+
 
 ## GCC
 * `gcc -g -o <output_file> <input-file.c>` stores in an input file and links for debugger
