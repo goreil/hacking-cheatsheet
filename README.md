@@ -5,6 +5,8 @@
 1. `python3 -c "import pty; pty.spawn('/bin/bash')"`
 2. <Press CTRL+Z> `stty raw -echo; fg`
 
+## Enable x32 binaries
+`sudo apt install libc6-i386`
 
 ## GCC
 * `gcc -g -o <output_file> <input-file.c>` stores in an input file and links for debugger
