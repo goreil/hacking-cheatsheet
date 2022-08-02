@@ -1,5 +1,18 @@
 # Cheatsheet for Exploitations
 
+## pwntools in jupyter notebook
+```python
+import os
+os.environ['PWNLIB_NOTERM'] = 'True'
+from pwn import *
+```
+## Sage
+Integer a = 3 in ring modulo 42:
+```sage
+R = Integers(42)
+a = R(3)
+```
+
 ## Upgrade reverse shell
 
 1. `python3 -c "import pty; pty.spawn('/bin/bash')"`
