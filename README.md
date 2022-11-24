@@ -33,6 +33,8 @@ a = R(3)
 * `run` Runs the program
 * `continue` Continues after a breakpoint
 * Find address of 'system': `p system`
+### GEF
+* Show memory mappings `vmmap`
 
 ## common commands
 * `echo "set disassembly intel" > ~/.gdbinit` sets gdb to intel syntax
