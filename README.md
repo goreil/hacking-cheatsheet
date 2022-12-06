@@ -1,5 +1,11 @@
 # Cheatsheet for Exploitations
 
+## angr
+### Get symbol
+```python
+s = "enter_symbol_here"
+project.loader.find_symbol(s).rebased_address
+```
 ## pwntools in jupyter notebook
 ```python
 import os
