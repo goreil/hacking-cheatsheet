@@ -1,5 +1,11 @@
 # Cheatsheet for Exploitations
 
+## Calling conventions
+### x86-64
+https://stackoverflow.com/questions/2535989/what-are-the-calling-conventions-for-unix-linux-system-calls-and-user-space-f
+* user_level_syscall: `%rdi, %rsi, %rdx, %rcx, %r8 and %r9`
+* user_level_function: `%rdi, %rsi, %rdx, %rcx, %r8 and %r9`
+
 ## angr
 ### Get symbol
 ```python
@@ -44,32 +50,6 @@ a = R(3)
 
 ## common commands
 * `echo "set disassembly intel" > ~/.gdbinit` sets gdb to intel syntax
-
-### Display format
-
-* **o** octal
-* **x** hex
-* **u** unsigned base 10
-* **t** binary
-* **i** instruction
-* **c** character
-### Sizes:
-* **b** single byte
-* **h** halfword (2 bytes)
-* **w** word (4 bytes)
-* **g** giant (8 bytes)
-
-### Examples
-* `x/8x $eip` gets the current command and following 8 Dwords(4-byte)
-* `info register eip` or `i r eip` returns the content of a register
-* `x/i $eip`retuns the command in human readable format
-* `print` can be used to do simple math which will be stored in `$1`
-* `nexti`*next instruction*
-* `x/s <address>` returns the string stored at that adress
-
-## Notes
-* Intel Syntax: `operation <destination>, <source>
-* x86-Processors: *little-endian byte order* 
 
 
 ## Shellcode
