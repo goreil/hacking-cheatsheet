@@ -49,6 +49,7 @@ a = R(3)
 * `run` Runs the program
 * `continue` Continues after a breakpoint
 * Find address of 'system': `p system`
+* Find something in memory `find $esp-0x1Quit, +0x10000, 0xffffcc74`, https://sourceware.org/gdb/onlinedocs/gdb/Searching-Memory.html
 ### GEF
 * Show memory mappings `vmmap`
 
