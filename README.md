@@ -34,6 +34,9 @@ a = R(3)
 1. `python3 -c "import pty; pty.spawn('/bin/bash')"`
 2. <Press CTRL+Z> `stty raw -echo; fg`
 
+## Load binary with provided libc
+https://github.com/io12/pwninit
+
 ## Enable x32 binaries
 `sudo apt install libc6-i386`
 
@@ -44,11 +47,6 @@ a = R(3)
 
 ## In GDB
 * Have run with arguments `gdb --args executablename arg1 arg2 arg3`
-* `list` Shows the source code if it exists.
-* `b <line>` Sets a breakpoint
-* `run` Runs the program
-* `continue` Continues after a breakpoint
-* Find address of 'system': `p system`
 * Find something in memory `find $esp-0x1Quit, +0x10000, 0xffffcc74`, https://sourceware.org/gdb/onlinedocs/gdb/Searching-Memory.html
 ### GEF
 * Show memory mappings `vmmap`
