@@ -1,0 +1,22 @@
+#!/bin/bash
+# Shellscript to run a c command quickly
+if [ "$#" -ne 1 ]
+then
+    echo "Usage: $0 arg1"
+    exit 1
+fi
+
+fname=$(mktemp)
+echo "#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdint.h>
+#include <sys/mman.h>
+int main(int argc, char **argv[]){
+$1
+}" > $fname.c
+
+gcc $fname.c -o $fname
+$fname
+rm $fname*
