@@ -1,4 +1,8 @@
+# Files
+readmem - Static binary to dump memory of a process
+
 # Cheatsheet for Exploitations
+
 ## Crypto
 ### Coppersmith method (missing low bits) explained
 https://github.com/p4-team/ctf/tree/master/2019-09-02-tokyowesterns/happy
