@@ -1,0 +1,12 @@
+#!/bin/bash
+# Dumps the content of a process 
+if [ "$#" -ne 2 ]
+then
+    echo "Usage: $0 [PID] [OUTDIR]"
+    exit 1
+fi
+cat /proc/$1/maps | awk '{print $1}' | ( IFS="-"
+    while read a b; do
+        dd if=/proc/$1/mem bs=$( getconf PAGESIZE ) iflag=skip_bytes,count_bytes \
+           skip=$(( 0x$a )) count=$(( 0x$b - 0x$a )) of="$2/$a"
+               done)
