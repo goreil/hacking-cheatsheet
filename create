@@ -1,19 +1,32 @@
-#!/usr/bin/sh
+#!/usr/bin/bash
 set -e
 # Usage message
 if [ "$#" -ne 1 ]
 then
     echo "Usage: $0 [shellcode-file]"
     exit 1
-fi
-(echo '.globl _start
-_start:
-.intel_syntax noprefix
-'; cat $1) > $1.S
 
-gcc -Wl,-N --static -nostdlib -o $1-elf $1.S 2>&1
-objcopy --dump-section .text=$1-raw $1-elf 2>&1
-objdump -M intel -d $1-elf
+
+fi
+
+# If it's a c file compile immediately
+if [[ $1 ==  *.c ]]
+then
+    fname=$1
+else
+
+    (echo '.globl _start
+    _start:
+    .intel_syntax noprefix
+    '; cat $1) > $1.S
+    fname=$1.S
+fi
+prefix="${fname%.*}"
+
+gcc -Wl,-N --static -nostdlib -o $prefix-elf $fname 2>&1
+objcopy --dump-section .text=$prefix-raw $prefix-elf 2>&1
+objdump -M intel -d $prefix-elf
 
 echo
-echo "Created $1 successfully"
+echo "Created $fname successfully"
+
