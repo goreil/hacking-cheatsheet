@@ -1,5 +1,10 @@
-# Files
-readmem - Static binary to dump memory of a process
+# Hacking-Cheatsheet
+This Repository contains a Cheatsheet for binary exploitation and cryptography as well as useful Bash scripts for those topics.
+
+# Scripts
+* `create`: Compile shellcode. Creates a `shellcode-elf` ELF-binary for easy debugging with `strace` and `shellcode-raw` for exploits.
+* `crun`: Run C-Code in the command line! Example usage: `crun 'printf("Sizeof int %d\n", sizeof(int));'`
+* `procdump`: Dump the memory content of a process with only `dd`. Useful when `gdb` is not installed on the server.
 
 # Cheatsheet for Exploitations
 
@@ -68,7 +73,7 @@ https://github.com/io12/pwninit
 ```
 Repeat nop 10 times
 
-### Randomize VA Space
+### Disable ASLR
 * `echo 0 > /proc/sys/kernel/randomize_va_space`
 
 
