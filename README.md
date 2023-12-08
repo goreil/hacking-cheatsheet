@@ -10,8 +10,34 @@ This Repository contains a Cheatsheet for binary exploitation and cryptography a
 
 ## Crypto
 ### Coppersmith method (missing low bits) explained
-https://github.com/p4-team/ctf/tree/master/2019-09-02-tokyowesterns/happy
+```python
+from Crypto.Util.number import bytes_to_long, long_to_bytes, getPrime
+from sage.all import *
+FLAG = 'FAKE_FLAG'
 
+n = getPrime(1024) * getPrime(1024)
+e = 3
+
+prefix = "Some really long message that starts with a known bits. Here is the Flag:"
+upper_bytes = bytes_to_long(prefix.encode())
+pt = bytes_to_long((prefix + FLAG).encode())
+ct = pow(pt, e, n)
+
+secret = bytes_to_long(FLAG.encode())
+
+i = len(FLAG)
+# Use Coppersmith to get roots of
+# (m+x)^3 - c  mod n
+P = PolynomialRing(Zmod(n), implementation='NTL', names=('x',))
+(x,) = P._first_ngens(1)
+# Remember that we have bytes! -> 8 bits
+m = upper_bytes << (i  * 8)
+pol = (m + x) ** e - ct
+roots = pol.small_roots()
+print(f"{roots=}")
+for pt in roots:
+    print(long_to_bytes(int(pt)))
+```
 
 ## Calling conventions
 ### x86-64
