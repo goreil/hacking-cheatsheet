@@ -1,20 +1,19 @@
-# docker build -t ctf:ubuntu22.04 .
-# If using Windows
-      # docker run --rm -v %cd%:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf:ubuntu22.04
-# If using Linux    
-      # docker run --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf:ubuntu22.04
-# docker exec -it ctf /bin/bash
+# docker build -t pwncollege .
+# docker run --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d pwncollege
+# docker exec -it pwncollege /bin/bash
 
-FROM ubuntu:22.04
-ENV LC_CTYPE C.UTF-8
+ARG image=mcr.microsoft.com/devcontainers/base:noble
+FROM $image
 ENV DEBIAN_FRONTEND=noninteractive
-RUN dpkg --add-architecture i386 && \
-apt-get update && \
-apt-get install -y build-essential jq strace ltrace curl wget rubygems gcc dnsutils netcat gcc-multilib net-tools vim gdb gdb-multiarch python python3 python3-pip python3-dev libssl-dev libffi-dev wget git make procps libpcre3-dev libdb-dev libxt-dev libxaw7-dev python-pip libc6:i386 libncurses5:i386 libstdc++6:i386 && \
-pip install capstone requests pwntools r2pipe && \
-pip3 install pwntools keystone-engine unicorn capstone ropper && \
-mkdir tools && cd tools && \
-git clone https://github.com/JonathanSalwan/ROPgadget && \
-cd .. && git clone https://github.com/pwndbg/pwndbg && cd pwndbg && git checkout stable && ./setup.sh && \
-cd .. && git clone https://github.com/niklasb/libc-database && cd libc-database && ./get && \
-gem install one_gadget
+RUN apt update
+RUN apt install -y build-essential ltrace curl wget rubygems vim tmux gdb gdbserver python3 python3-pip liblzma-dev  pkg-config
+RUN mkdir -p ~/miniconda3 && wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh && bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3 && rm -rf ~/miniconda3/miniconda.sh 
+RUN ~/miniconda3/bin/conda init bash
+RUN . ~/.bashrc && pip3 install pwntools angr
+RUN . ~/.bashrc && conda install ipython
+# Rust
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+RUN cd /opt && git clone https://github.com/pwndbg/pwndbg && cd pwndbg && ./setup.sh 
+RUN gem install one_gadget
+RUN cd /opt && git clone --depth 1 https://github.com/junegunn/fzf.git && fzf/install
+RUN /root/.cargo/bin/cargo install pwninit
